@@ -10,18 +10,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
-    <div id="conteudo">
-        <div>
-            <button onclick="somdoamor()" class="som">Clique aqui para escutar a trilha sonora</button>
-        </div>
+<body id="plano">
+    <div id="conteudo" style="flex-direction: row;">
+        <button onclick="somdoamor()" id="som">Clique aqui para escutar a trilha sonora</button>
         <h2> Quer sair comigo ?</h2>
         <a href="aceitou.html"><button class="btn" onclick=aceitou.html>Sim</button></a>
         <button class="btn" onclick="desvia(this),exibirVideo()" onmouseover="desvia(this)">Não</button>
-
+        <img id="img" src="./imagens/im1.png">
     </div>
-    <img id="img" src="./imagens/blossom-hearts.gif">
 </body>
 
 </html>

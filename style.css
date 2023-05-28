@@ -8,10 +8,16 @@ body {
     background-image: url(./imagens/blossom-hearts.gif);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top;
-    width: 100%;
-    height: 100%;
-}
+    background-attachment: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 #QRCode {
     align-items: center;
@@ -21,6 +27,7 @@ body {
     max-height: 350px;
     width: auto;
     height: auto;
+    z-index: 1;
 }
 
 #img {
@@ -52,6 +59,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 #som {

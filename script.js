@@ -3,6 +3,7 @@ function desvia(t) {
     btn.style.position = 'absolute';
     btn.style.bottom = geraPosicao(10, 90);
     btn.style.left = geraPosicao(20, 80);
+    document.getElementById("texto2").style.display = "flex";
 }
 
 function geraPosicao(min, max) {

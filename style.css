@@ -7,6 +7,20 @@ body {
 .texto {
     animation: puff-in-center 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
+
+#texto {
+    position: absolute;
+    top: 20%;
+    animation: puff-in-center 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) 2s both;
+}
+
+#texto2 {
+    position: absolute;
+    top: 30%;
+    display: none;
+    animation: puff-in-center 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
 #plano {
     background-image: url(./imagens/blossom-hearts.gif);
     background-repeat: no-repeat;

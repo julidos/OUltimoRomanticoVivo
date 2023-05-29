@@ -13,3 +13,13 @@ function somdoamor() {
     var audio = new Audio("./imagens/musica.mp3");
     audio.play();
 }
+
+function mostrarConteudo() {
+    document.getElementById("conteudo").style.display = "flex";
+}
+
+function executarFuncoes() {
+    somdoamor();
+    mostrarConteudo();
+    document.getElementById("som").style.display = "none";
+  }

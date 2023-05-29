@@ -23,3 +23,8 @@ function executarFuncoes() {
     mostrarConteudo();
     document.getElementById("som").style.display = "none";
   }
+
+  function mostrarConteudo2() {
+    document.getElementById("conteudo2").style.display = "flex";
+    document.getElementById("conteudo").style.display = "none";
+}

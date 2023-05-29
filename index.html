@@ -11,7 +11,22 @@
 </head>
 
 <body id="plano">
-    <a href="perguntas.html"><button class="btn">Sim</button></a>
+    <button onclick="executarFuncoes()" id="som" class="btn"
+    style="animation: slide-in-top 1.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;">Clique aqui para começar o programa</button>
+    <div id="conteudo" style="display: none;">
+        <h1 class="texto"> Quer sair comigo ?</h1>
+        <button onclick="mostrarConteudo2()" class="btn">Sim</button></a>
+        <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)">Não</button>
+        <img id="img" src="./imagens/im1.png">
+    </div>
+    <div id="conteudo2" style="display: none;">
+        <img  id="img2" src="./imagens/im2.png">
+        <img  id="img3" src="./imagens/im3.png">
+        <h3 class="texto">Escaneie o QR Code abaixo ou apenas clique nele</h3>
+        <a href=" https://wa.me/5561982260527/?text=Eu+aceito+sair+contigo "><img id="QRCode"
+                src="./imagens/QRCode.png"></a>
+        <a href="index.html"><button class="btn" style="margin: 10px;">Voltar</button></a>
+    </div>
 </body>
 
 </html>

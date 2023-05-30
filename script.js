@@ -1,44 +1,53 @@
 function desvia(t) {
-    var btn = t;
+    const btn = t;
     btn.style.position = 'absolute';
     btn.style.bottom = geraPosicao(10, 90);
     btn.style.left = geraPosicao(20, 80);
-    escreverMensagem()
-}
-
-function geraPosicao(min, max) {
-    return (Math.random() * (max - min) + min) + "%";
-}
-
-function iniciarMusica() {
-    var audio = new Audio("./imagens/musica.mp3");
+    escreverMensagem();
+  }
+  
+  function geraPosicao(min, max) {
+    return Math.random() * (max - min) + min + "%";
+  }
+  
+  function iniciarMusica() {
+    const audio = new Audio("./imagens/musica.mp3");
     audio.play();
-}
-
-function mostrarImagemDeFundo() {
-    document.body.classList.add('mostrar-fundo')
-}
-
-function mostrarConteudo() {
-    document.getElementById("conteudo").style.display = "flex";
-    document.getElementById("img").style.display = "flex";
-    document.getElementById("conteudo2").style.display = "none";
-}
-
-function executarFuncoes() {
+  }
+  
+  function mostrarImagemDeFundo() {
+    document.body.classList.add('mostrar-fundo');
+  }
+  
+  function mostrarConteudo() {
+    const conteudo = document.getElementById("conteudo");
+    const img = document.getElementById("img");
+    const conteudo2 = document.getElementById("conteudo2");
+  
+    conteudo.style.display = "flex";
+    img.style.display = "flex";
+    conteudo2.style.display = "none";
+  }
+  
+  function executarFuncoes() {
     iniciarMusica();
     mostrarConteudo();
     mostrarImagemDeFundo();
-    document.getElementById("som").style.display = "none";
-
-}
-
-function mostrarConteudo2() {
-    document.getElementById("conteudo2").style.display = "flex";
-    document.getElementById("img").style.display = "none";
-    document.getElementById("conteudo").style.display = "none";
-    document.getElementById("mensagens").style.display = "none";
-}
+    const som = document.getElementById("som");
+    som.style.display = "none";
+  }
+  
+  function mostrarConteudo2() {
+    const conteudo2 = document.getElementById("conteudo2");
+    const img = document.getElementById("img");
+    const conteudo = document.getElementById("conteudo");
+    const mensagens = document.getElementById("mensagens");
+  
+    conteudo2.style.display = "flex";
+    img.style.display = "none";
+    conteudo.style.display = "none";
+    mensagens.style.display = "none";
+  }
 
 var mensagens = [
     "prometo que sou um cara legal. 👍🏽",
@@ -53,20 +62,21 @@ var mensagens = [
     "esquece a última mensagem botei sem querer",
     "tenho tdah",
     "o que a gente tava falando mesmo",
-    "ah é, voce sair comigo",
     "passei 3 dias fazendo isso por favor",
     "aprendi javascript só pra fazer isso é sério",
     "pra quê tanto não ta me deixando triste 😢",
     "Ei por favor pare está me machucando 😰",
     "o que eu te fiz me diz 😭",
+    "estou de joelhos implorando neste instante",
+    "é sério vc só n ta vendo",
     "essa é a última mensagem acabou minha criatividade",
     "eu menti, aceita logo",
     "não vou desistir sou brasilieiro",
     "brasileiros não desistem nunca",
     "tenho 3 graus de miopia",
     "adoro natação",
-    "sou bom com pessoas mais velhas",
     "tenho medo de altura",
+    "já quebrei o braço",
     "ja comi carne de lhama",
     "sei lá caralho não sei mais o que to falando",
     "ACEITA POR FAVOR ESSA É A ÚLTIMA MENSAGEM",
@@ -77,20 +87,61 @@ var mensagens = [
     "ACEITAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 ];
 
-var indiceMensagemAtual = 0;
+let indiceMensagemAtual = 0;
 
 function escreverMensagem() {
-    var mensagem = mensagens[indiceMensagemAtual];
-    var elementoMensagens = document.getElementById("mensagens");
-    var novaMensagem = document.createElement("h3");
+    const mensagem = mensagens[indiceMensagemAtual];
+    const elementoMensagens = document.getElementById("mensagens");
+    const novaMensagem = document.createElement("h3");
     novaMensagem.textContent = mensagem;
-
     novaMensagem.classList.add("texto2");
     novaMensagem.style.position = "absolute";
-    
-    novaMensagem.style.left = geraPosicao(10, 85);
-    novaMensagem.style.top = geraPosicao(10, 85);
-
-    elementoMensagens.appendChild(novaMensagem);
-    indiceMensagemAtual = (indiceMensagemAtual + 1) % mensagens.length;
+  
+    let left, top;
+    let tentativas = 0;
+    const maxTentativas = 20;
+    const mensagemWidth = 200; // Largura estimada da mensagem em pixels
+    const mensagemHeight = 40; // Altura estimada da mensagem em pixels
+    let sobreposicao = false;
+  
+    do {
+      left = geraPosicao(10, 85);
+      top = geraPosicao(10, 85);
+      novaMensagem.style.left = left;
+      novaMensagem.style.top = top;
+  
+      sobreposicao = false;
+  
+      const mensagensExistentes = elementoMensagens.querySelectorAll("h3");
+      for (let i = 0; i < mensagensExistentes.length; i++) {
+        const mensagemExistente = mensagensExistentes[i];
+        const mensagemExistenteRect = mensagemExistente.getBoundingClientRect();
+        const novaMensagemRect = novaMensagem.getBoundingClientRect();
+  
+        if (
+          novaMensagemRect.left < mensagemExistenteRect.right &&
+          novaMensagemRect.right > mensagemExistenteRect.left &&
+          novaMensagemRect.top < mensagemExistenteRect.bottom &&
+          novaMensagemRect.bottom > mensagemExistenteRect.top
+        ) {
+          sobreposicao = true;
+          break;
+        }
+      }
+  
+      tentativas++;
+    } while (sobreposicao && tentativas < maxTentativas);
+  
+    if (!sobreposicao) {
+      novaMensagem.style.left = left + "px";
+      novaMensagem.style.top = top + "px";
+      elementoMensagens.appendChild(novaMensagem);
+      indiceMensagemAtual = (indiceMensagemAtual + 1) % mensagens.length;
+    }
+  }
+  
+  
+  
+function voltar() {
+  window.history.back();
 }

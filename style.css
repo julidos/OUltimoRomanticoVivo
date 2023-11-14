@@ -11,6 +11,7 @@ body {
 }
 
 .texto {
+  text-align: center;
   animation: puff-in-center 3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 

@@ -1,51 +1,71 @@
 function desvia(t) {
-    const btn = t;
-    btn.style.position = 'absolute';
-    btn.style.bottom = geraPosicao(10, 90);
-    btn.style.left = geraPosicao(20, 80);
-    escreverMensagem();
-  }
+  const btn2 = t;
+  btn2.style.position = 'absolute';
+  btn2.style.bottom = geraPosicao(10, 90);
+  btn2.style.left = geraPosicao(20, 80);
+  escreverMensagem();
+}
   
   function geraPosicao(min, max) {
-    
+
     return Math.random() * (max - min) + min + "%";
   }
   
-  function iniciarMusica() {
-    const audio = new Audio("./imagens/musica.mp3");
-    audio.play();
-  }
+  const audio = new Audio("./imagens/musica.mp3");
+  const audio2 = new Audio("./imagens/musica2.mp3");
   
-  function mostrarImagemDeFundo() {
-    document.body.classList.add('mostrar-fundo');
-  }
-  
+
   function mostrarConteudo() {
     const conteudo = document.getElementById("conteudo");
     const img = document.getElementById("img");
     const conteudo2 = document.getElementById("conteudo2");
-  
+    const imagemFundo = document.getElementById("imagemFundo")
+    imagemFundo.style.display = "flex";
     conteudo.style.display = "flex";
     img.style.display = "flex";
     conteudo2.style.display = "none";
   }
   
   function executarFuncoes() {
-    iniciarMusica();
+    audio.play();
     mostrarConteudo();
-    mostrarImagemDeFundo();
     const som = document.getElementById("som");
     som.style.display = "none";
   }
   
+function acabouMensagens() {
+  const mensagens = document.getElementById("mensagens");
+  const titulo1 = document.getElementById("titulo1");
+  const img12 = document.getElementById("img12");
+  const img = document.getElementById("img");
+  let titulo2 = document.querySelector(".titulo2");
+  let btn2 = document.querySelector('.btn2');
+  const imagemFundo = document.getElementById("imagemFundo")
+  const imagemFundo2 = document.getElementById("imagemFundo2")
+  imagemFundo2.style.display = "flex";
+  imagemFundo.style.display = "none";
+  img.style.display = "none";
+  img12.style.display = "flex";
+  titulo2.style.display = "flex";
+  btn2.style.display = "none";
+  titulo1.style.display = "none";
+  mensagens.style.display = "none";
+  audio2.play();
+  audio.pause();
+}
+
   function mostrarConteudo2() {
     const conteudo2 = document.getElementById("conteudo2");
     const img = document.getElementById("img");
+    const img12 = document.getElementById("img12");
     const conteudo = document.getElementById("conteudo");
     const mensagens = document.getElementById("mensagens");
   
+    audio.play();
+    audio2.pause();
     conteudo2.style.display = "flex";
     img.style.display = "none";
+    img12.style.display = "none";
     conteudo.style.display = "none";
     mensagens.style.display = "none";
   }
@@ -70,6 +90,9 @@ var mensagens = [
     "o que eu te fiz me diz 😭",
     "estou de joelhos implorando neste instante",
     "é sério vc só n ta vendo",
+    "sei dirigir de forma duvidosa",
+    "sou engraçadinho faço piada vc ri",
+    "te divirto(opcional",
     "essa é a última mensagem acabou minha criatividade",
     "eu menti, aceita logo",
     "não vou desistir sou brasilieiro",
@@ -89,60 +112,64 @@ var mensagens = [
 ];
 
 let indiceMensagemAtual = 0;
+let contador = 0;
 
 function escreverMensagem() {
-    const mensagem = mensagens[indiceMensagemAtual];
-    const elementoMensagens = document.getElementById("mensagens");
-    const novaMensagem = document.createElement("h3");
-    novaMensagem.textContent = mensagem;
-    novaMensagem.classList.add("texto2");
-    novaMensagem.style.position = "absolute";
-  
-    let left, top;
-    let tentativas = 0;
-    const maxTentativas = 20;
-    const mensagemWidth = 200; // Largura estimada da mensagem em pixels
-    const mensagemHeight = 40; // Altura estimada da mensagem em pixels
-    let sobreposicao = false;
-  
-    do {
+  contador++;
+  const mensagem = mensagens[indiceMensagemAtual];
+  const elementoMensagens = document.getElementById("mensagens");
+  const novaMensagem = document.createElement("h3");
+  novaMensagem.textContent = mensagem;
+  novaMensagem.classList.add("texto2");
+  novaMensagem.style.position = "absolute";
+
+  let left, top;
+  let tentativas = 0;
+  const maxTentativas = 20;
+  const mensagemWidth = 200; // Largura estimada da mensagem em pixels
+  const mensagemHeight = 40; // Altura estimada da mensagem em pixels
+  let sobreposicao = false;
+
+  do {
       left = geraPosicao(10, 85);
       top = geraPosicao(10, 85);
       novaMensagem.style.left = left;
       novaMensagem.style.top = top;
-  
+
       sobreposicao = false;
-  
+
       const mensagensExistentes = elementoMensagens.querySelectorAll("h3");
       for (let i = 0; i < mensagensExistentes.length; i++) {
-        const mensagemExistente = mensagensExistentes[i];
-        const mensagemExistenteRect = mensagemExistente.getBoundingClientRect();
-        const novaMensagemRect = novaMensagem.getBoundingClientRect();
-  
-        if (
-          novaMensagemRect.left < mensagemExistenteRect.right &&
-          novaMensagemRect.right > mensagemExistenteRect.left &&
-          novaMensagemRect.top < mensagemExistenteRect.bottom &&
-          novaMensagemRect.bottom > mensagemExistenteRect.top
-        ) {
-          sobreposicao = true;
-          break;
-        }
+          const mensagemExistente = mensagensExistentes[i];
+          const mensagemExistenteRect = mensagemExistente.getBoundingClientRect();
+          const novaMensagemRect = novaMensagem.getBoundingClientRect();
+
+          if (
+              novaMensagemRect.left < mensagemExistenteRect.right &&
+              novaMensagemRect.right > mensagemExistenteRect.left &&
+              novaMensagemRect.top < mensagemExistenteRect.bottom &&
+              novaMensagemRect.bottom > mensagemExistenteRect.top
+          ) {
+              sobreposicao = true;
+              break;
+          }
       }
-  
+
       tentativas++;
-    } while (sobreposicao && tentativas < maxTentativas);
-  
-    if (!sobreposicao) {
+  } while (sobreposicao && tentativas < maxTentativas);
+
+  if (!sobreposicao) {
       novaMensagem.style.left = left + "px";
       novaMensagem.style.top = top + "px";
       elementoMensagens.appendChild(novaMensagem);
       indiceMensagemAtual = (indiceMensagemAtual + 1) % mensagens.length;
-    }
-  }
-  
-  
-  
+ }
+ if (contador > mensagens.length) {
+  acabouMensagens();
+ }
+}
+
+
 function voltar() {
   window.history.back();
 }

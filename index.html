@@ -11,31 +11,43 @@
 
 <body id="plano">
     <main>
+
+        <section>            
+            <img id="imagemFundo" src="./imagens/blossom-hearts.gif">
+            <img id="imagemFundo2" src="./imagens/stock-footage-rain-of-emojis-c-unscreen.gif">
+        </section>
+
         <section id="som">
-            <button onclick="executarFuncoes()" class="btn">Clique aqui para começar o programa</button>
+            <button onclick="executarFuncoes()" class="btn1">Clique aqui para começar o programa</button>
         </section>
 
         <section id="mensagens"></section>
 
         <section id="conteudo">
-            <h1 class="texto">Quer sair comigo?</h1>
+            <h1 class="texto" id="titulo1">Quer sair comigo?</h1>
+            <h1 class="texto titulo2">TRANQUILO ENTÃO.<br>VAMOS TENTAR DE OUTRA FORMA. <br> ACEITE. <br> AGORA. </h1>
             <div>
-                <button onclick="mostrarConteudo2()" class="btn">Sim</button>
-                <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)">Não</button>
+                <button onclick="mostrarConteudo2()" class="btn1">Sim</button>
+                <button class="btn2" onclick="desvia(this)" onmouseover="desvia(this)">Não</button>
             </div>
         </section>
         <img id="img" src="./imagens/im1.png" alt="Imagem 1">
+        <img id="img12" src="./imagens/im12.png" alt="Imagem 1">
 
         <section id="conteudo2">
+            <h1 class="texto2">NOSSA QUEM DIRIA QUE VOCÊ ACEITARIA</h1>
+            <h1 class="texto2">Dia: 15/11 Quarta-feira feriado</h1>
+            <h1 class="texto2">Local: Bomba perto da sua casa que não sei onde é</h1>
+            <h1 class="texto2">Horário: Te busco em casa às 19h</h1>
+             <h3 class="texto"></h3>
+            </a>
+            <div>
+                <a href="https://api.whatsapp.com/send?phone=5561982260527&text=Combinado%20%F0%9F%91%8D">
+                    <button class="btn1" style="margin-top: 10px;">Combinado 👍</button>
+                </a>
+            </div>
             <img id="img2" src="./imagens/im2.png" alt="Imagem 2">
             <img id="img3" src="./imagens/im3.png" alt="Imagem 3">
-             <h3 class="texto"></h3>
-                <a href="https://www.instagram.com/juli.andrd/" target="_blank">
-                <img id="QRCode" src="./imagens/QRCode.png" alt="QR Code">
-            </a>
-            <a href="index.html">
-                <button class="btn" style="margin-top: 10px;" onclick="voltar()">Voltar</button>
-            </a>
         </section>
     </main>
 

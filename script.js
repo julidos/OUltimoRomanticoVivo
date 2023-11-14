@@ -60,13 +60,13 @@ function acabouMensagens() {
     const img12 = document.getElementById("img12");
     const conteudo = document.getElementById("conteudo");
     const mensagens = document.getElementById("mensagens");
-    const imagemFundo1 = document.getElementById("imagemFundo2");
+    const imagemFundo = document.getElementById("imagemFundo");
     const imagemFundo2 = document.getElementById("imagemFundo2");
   
     audio.play();
     audio2.pause();
     conteudo2.style.display = "flex";
-    imagemFundo1.style.display = "flex";
+    imagemFundo.style.display = "flex";
     imagemFundo2.style.display = "none";
     img.style.display = "none";
     img12.style.display = "none";
@@ -130,8 +130,6 @@ function escreverMensagem() {
   let left, top;
   let tentativas = 0;
   const maxTentativas = 20;
-  const mensagemWidth = 200; // Largura estimada da mensagem em pixels
-  const mensagemHeight = 40; // Altura estimada da mensagem em pixels
   let sobreposicao = false;
 
   do {

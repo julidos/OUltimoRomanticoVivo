@@ -60,10 +60,14 @@ function acabouMensagens() {
     const img12 = document.getElementById("img12");
     const conteudo = document.getElementById("conteudo");
     const mensagens = document.getElementById("mensagens");
+    const imagemFundo1 = document.getElementById("imagemFundo2");
+    const imagemFundo2 = document.getElementById("imagemFundo2");
   
     audio.play();
     audio2.pause();
     conteudo2.style.display = "flex";
+    imagemFundo1.style.display = "flex";
+    imagemFundo2.style.display = "none";
     img.style.display = "none";
     img12.style.display = "none";
     conteudo.style.display = "none";
